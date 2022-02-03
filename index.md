@@ -1,37 +1,68 @@
-## Welcome to GitHub Pages
+## Welcome to project "guess_a_word"!
 
-You can use the [editor on GitHub](https://github.com/misha-network/guess_a_word/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Guess a word! is game wherein you required guess a word.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### All Code
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Here are all code of project
 
 ```markdown
-Syntax highlighted code block
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Guess a word!</title>
+</head>
+<body>
 
-# Header 1
-## Header 2
-### Header 3
+<h1>Guess a word!</h1>
 
-- Bulleted
-- List
+<script type="text/javascript">
+	var words = [
+	"javascript",
+	"monkey",
+	"amazing",
+	"pancake",
+	"cat",
+	"good",
+	"tea",
+	"cafe",
+	"man",
+	"women",
+	"hello"
+	];
 
-1. Numbered
-2. List
+	var word = words[Math.floor(Math.random() * words.length)];
 
-**Bold** and _Italic_ and `Code` text
+	var answerArray = [];
+	for (var i = 0; i < word.length; i++) {
+		answerArray[i] = "_";
+	}
 
-[Link](url) and ![Image](src)
+	var remainingLetters = word.length;
+
+	while (remainingLetters > 0) {
+		alert(answerArray.join(" "));
+		var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+		if (guess === null) {
+			break;
+		}
+		else if (guess.length !== 1) {
+			alert("Please enter a single letter.");
+		}
+		else {
+			for (var j = 0; j < word.length; j++) {
+				if (word[j] === guess) {
+					answerArray[j] = guess;
+					remainingLetters--;
+				}
+			}
+		}
+	}
+
+	alert(answerArray.join(" "));
+	alert("Good job! The answer was " + word);
+</script>
+</body>
+</html>
 ```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/misha-network/guess_a_word/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
